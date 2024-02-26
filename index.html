@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Securly Clicker</title>
+    <link rel="icon" href="images/first_click.png">
+</head>
+<body> 
+<div id="homeMenu">
+    <div class="mainMenu">
+        <h1 class="gameLogoText chromaText">Securly Clicker</h1>
+        <button class="mainMenuButton" onclick="loadGame()">Play</button>
+        <a href="changelog.html"><button class="mainMenuButton">Changelog</button></a>
+        <button class="mainMenuButton" onclick="loadSettings()">Settings</button>
+        <button class="mainMenuButton" onclick="toggleAchievements()">Achievements</button>
+    </div>
+    <img src="images/securly.gif" class="mainMenuImg" draggable="false">
+    <a href="privacyPolicy.html" class="privacyPolicyLink">Privacy Policy</a>
+</div>
+
+<div id="settings" style="display: none;">
+    <h2 class="backToHomeLink" onclick="unloadSettings()">Back To Home</h2>
+    <h2 class="settingsText">Settings</h2>
+    <h2 class="settingText">Background Music</h2>
+    <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+</div>
+
+
+<div id="game" style="display: none;">
+    <h2 class="backToHomeLink" onclick="unloadGame()">Exit Game</h2>
+   <h2 id="gameLogoText2" class="gameLogoText2 chromaText">Securly Clicker™</h2>
+   <h2 id="gameCounter" class="gameCounter">0 Points</h2>
+   <h2 id="gameMultiCounter" class="gameMultiCounter">1 Point Per Click</h2>
+
+   <img src="images/securly.gif" class="gameImg" onclick="addManualCount()" draggable="false">
+
+    <h2 id="showGameUpgrades" class="showGameUpgrades" onclick="showGameUpgrades()">Show Upgrades</h2>
+
+   <div id="gameUpgrades" class="gameUpgrades">
+    <h2 onclick="upgradeValues.upgradeBuyMultipleCount = 1;" id="buy1">1x</h2><h2 onclick="upgradeValues.upgradeBuyMultipleCount = 10;" id="buy10">10x</h2><h2 onclick="upgradeValues.upgradeBuyMultipleCount = 100;" id="buy100">100x</h2>
+    <h2 class="hideGameUpgrades" style="color: chocolate; background-color: darkgray; padding: 1vw; border-radius: 0.3vw;" onclick="hideGameUpgrades()">Hide Upgrades</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade" onclick="buyUpgradeConfirm(230, 1); upgradeValues.count = 230 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 1 * upgradeValues.upgradeBuyMultipleCount;">Sh1mmer</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade" onclick="buyUpgradeConfirm(500, 3); upgradeValues.count = 500 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 3 * upgradeValues.upgradeBuyMultipleCount;">Insecurly</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade" onclick="buyUpgradeConfirm(1000, 8); upgradeValues.count = 1000 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 8 * upgradeValues.upgradeBuyMultipleCount;">Squirrel Vox</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade" onclick="buyUpgradeConfirm(2500, 23); upgradeValues.count = 2500 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 23 * upgradeValues.upgradeBuyMultipleCount;">Proton VPN</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade" onclick="buyUpgradeConfirm(7500, 40); upgradeValues.count = 7500 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 40 * upgradeValues.upgradeBuyMultipleCount;">Chrome100</h2>
+    <h2 style="background-color: lightskyblue; padding: 0.5vw; border-radius: 0.3vw; color: #222;" id="prestigeAmount"></h2>
+   </div>
+
+   <div class="buyUpgradeConfirm" id="buyUpgradeConfirm">
+    <h2 id="buyUpgradeInfo"></h2>
+    <h2 class="buyUpgradeBuy" id="buyUpgradeBuy" onclick="buyUpgrade(upgradeValues.count, upgradeValues.multi)">Buy</h2>
+    <h2 class="buyUpgradeCancel" id="buyUpgradeCancel" onclick="cancelBuyUpgrade()">Cancel</h2>
+</div>
+
+<h2 id="showGameUpgrades2" class="showGameUpgrades2" onclick="showGameUpgrades2()">Show Upgrades</h2>
+
+   <div id="gameUpgrades2" class="gameUpgrades2">
+    <h2 onclick="upgradeValues.upgradeBuyMultipleCount = 1;" id="2buy1">1x</h2><h2 onclick="upgradeValues.upgradeBuyMultipleCount = 10;" id="2buy10">10x</h2><h2 onclick="upgradeValues.upgradeBuyMultipleCount = 100;" id="2buy100">100x</h2>
+    <h2 class="hideGameUpgrades2" style="color: chocolate; background-color: darkgray; padding: 1vw; border-radius: 0.3vw;" onclick="hideGameUpgrades2()">Hide Upgrades</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade2" onclick="buyUpgradeConfirm2(1000, 3); upgradeValues.count = 1000 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 3 * upgradeValues.upgradeBuyMultipleCount;">AK 47</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade2" onclick="buyUpgradeConfirm2(3500, 8); upgradeValues.count = 3500 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 8 * upgradeValues.upgradeBuyMultipleCount;">Pistol</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade2" onclick="buyUpgradeConfirm2(5000, 15); upgradeValues.count = 5000 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 15 * upgradeValues.upgradeBuyMultipleCount;">Nuclear Bomb</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade2" onclick="buyUpgradeConfirm2(15000, 50); upgradeValues.count = 15000 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 50 * upgradeValues.upgradeBuyMultipleCount;">Tank</h2>
+    <h2 style="background-color: lightskyblue; padding: 0.5vw; border-radius: 0.3vw; color: #222;" id="prestigeAmount2"></h2>
+   </div>
+
+    <div class="buyUpgradeConfirm2" id="buyUpgradeConfirm2">
+        <h2 id="buyUpgradeInfo2"></h2>
+        <h2 class="buyUpgradeBuy2" id="buyUpgradeBuy2" onclick="buyUpgrade2(upgradeValues.count, upgradeValues.multi)">Buy</h2>
+        <h2 class="buyUpgradeCancel2" id="buyUpgradeCancel2" onclick="cancelBuyUpgrade2()">Cancel</h2>
+    </div>
+
+
+
+
+    <h2 id="showGameUpgrades3" class="showGameUpgrades3" onclick="showGameUpgrades3()">Show Upgrades</h2>
+
+   <div id="gameUpgrades3" class="gameUpgrades3">
+    <h2 onclick="upgradeValues.upgradeBuyMultipleCount = 1;" id="3buy1">1x</h2><h2 onclick="upgradeValues.upgradeBuyMultipleCount = 10;" id="3buy10">10x</h2><h2 onclick="upgradeValues.upgradeBuyMultipleCount = 100;" id="3buy100">100x</h2>
+    <h2 class="hideGameUpgrades3" style="color: chocolate; background-color: darkgray; padding: 1vw; border-radius: 0.3vw;" onclick="hideGameUpgrades3()">Hide Upgrades</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade3" onclick="buyUpgradeConfirm3(5000, 10); upgradeValues.count = 5000 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 10 * upgradeValues.upgradeBuyMultipleCount;">Securly</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade3" onclick="buyUpgradeConfirm3(25000, 30); upgradeValues.count = 25000 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 30 * upgradeValues.upgradeBuyMultipleCount;">Cisco Umbrella</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade3" onclick="buyUpgradeConfirm3(55000, 55); upgradeValues.count = 55000 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 55 * upgradeValues.upgradeBuyMultipleCount;">Classlink Analytics</h2>
+    <h2 style="background-color: darkgray; padding: 0.5vw; border-radius: 0.3vw;" class="upgrade3" onclick="buyUpgradeConfirm3(150000, 150); upgradeValues.count = 150000 * upgradeValues.upgradeBuyMultipleCount; upgradeValues.multi = 150 * upgradeValues.upgradeBuyMultipleCount;">ChromeOS</h2>
+    <h2 style="background-color: lightskyblue; padding: 0.5vw; border-radius: 0.3vw; color: #222;" id="prestigeAmount3"></h2>
+   </div>
+
+</div>
+    <div class="buyUpgradeConfirm3" id="buyUpgradeConfirm3">
+        <h2 id="buyUpgradeInfo3"></h2>
+        <h2 class="buyUpgradeBuy3" id="buyUpgradeBuy3" onclick="buyUpgrade3(upgradeValues.count, upgradeValues.multi)">Buy</h2>
+        <h2 class="buyUpgradeCancel3" id="buyUpgradeCancel3" onclick="cancelBuyUpgrade3()">Cancel</h2>
+    </div>
+
+
+
+<!-- Achievements Section -->
+<div id="achievementsSection" style="display: none;">
+    <button onclick="toggleAchievements()" style=" font-size: 2vw; padding: 1vw;">Back</button>
+    <h2 class="achievementSectionTitle">Achievements</h2>
+    <div id="achievementsList" class="achievementsList">
+        <!-- Achievement items will be dynamically added here -->
+    </div>
+</div>
+
+
+
+</body></html>
